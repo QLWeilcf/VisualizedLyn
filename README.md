@@ -1,7 +1,12 @@
 # VisualizedLyn
 Visualization project
 
-js
+js & html
+
+- my bills visualize
+- geo visualize
+
+
 
 python
 
