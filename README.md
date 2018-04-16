@@ -3,6 +3,7 @@ Visualization project
 
 ## js & html
 
+- [Echarts frame](./JSframeEcharts.js)
 - my bills visualize
 - reading data anly and vis
 - geo visualize
@@ -20,5 +21,5 @@ Visualization project
 
 
 ## R vis
-
+ coming soon
 
