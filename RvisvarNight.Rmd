@@ -1,0 +1,254 @@
+---
+title: "RvisvarNight"
+author: "lcf"
+date: "2018年4月17日"
+output: html_document
+---
+
+# 绘图
+
+基本流程：数据预处理-->明确表达的信息-->选择图表类型-->优化参数和效果。
+
+
+## ggplot2
+使用ggploy()函数定义空图对象-->指定图表类型-->使用aes()指定数据特征
+
+```{r}
+library(ggplot2)
+c1=sort(fs[1:10])
+c2=c(10:19)
+d1=data.frame(c1,c2)
+#names(d1)=c('1','2','3','4','5','6','7','8','9','10')
+ggplot(data=d1,aes(x=c1,y=c2))
+
+```
+```{r}
+ggplot(data=d1,aes(x=c2,y=c1))+
+geom_point(size=1)
+# +geom_smooth(size=2)
+```
+
+```{r}
+library(ggplot2)
+library(dplyr)
+data("midwest",package = "ggplot2")
+p<-ggplot(data=midwest,aes(area,poptotal))+geom_point()  #教程用了管道运算符
+# p<-midwest %>% ggplot(aes(area,poptotal))+geom_point() 
+p+xlim(0,0.8) #限制坐标轴
+
+```
+```{r}
+p+scale_x_continuous(limits = c(0,0.08)) #坐标轴限制方法2
+```
+
+```{r}
+#更改刻度显示间隔
+p +  
+    scale_x_continuous(breaks = seq(0, 0.10, 0.01)) +
+  scale_y_continuous(breaks = seq(0, 5e6, 1e6/2))
+```
+
+```{r}
+# 修改标题，坐标轴标签 Modify title and labels
+# method one
+# p + labs(x = "Mian Ji", y = "Ren Kou", title= "midwest dataset") #这样的标题会居左排
+# 还有xlab ylab可以用
+# method two
+p+scale_x_continuous(name="Mian Ji")+scale_y_continuous(name="Ren kou")+ggtitle(" mid west dataset vis")+ggti
+```
+
+颜色一般在**aes**里设置。
+```{r}
+pv<-midwest %>% ggplot()+geom_point(aes(area,poptotal,col=state))+
+  scale_color_brewer(palette = "Set1") #set1和set1的效果是不一样的，set1是纯色系
+#原教程是将aes写到ggplot里
+pv
+```
+
+```{r}
+# facet 分面
+pv+facet_wrap(~state)
+#不是很了解 ~的作用；没有~则会：object 'state' not found
+#还有facet_grid()  facet_null()
+```
+
+```{r}
+
+pv+facet_grid(~state)
+
+```
+
+
+
+```{r}
+# 统计变换
+
+pv+facet_wrap(~state)+
+  stat_smooth(method="glm",span=0.5,col="darkred",aes(area,poptotal))
+#不知道为什么这样调用pv时需要再指定aes，而下面那样用+连接可以不用
+```
+```{r}
+midwest %>%  
+    ggplot(aes(area, poptotal, col = state)) +  
+    geom_point() +  
+    scale_color_brewer(palette = "Set1") +  
+    facet_wrap(~state) + 
+    stat_smooth(method = "glm", span = 0.5, col = "darkred")
+```
+
+
+主题： theme_minimal()
+
+### lesson 4 hw
+```{r}
+#install.packages("gapminder")
+library(ggplot2)
+library(dplyr)
+```
+
+```{r}
+library(gapminder)
+
+gapminder %>% ggplot(aes(gdpPercap,lifeExp))+
+  geom_point()+
+  labs(x="gdpPercap",y="lifeExp")
+  
+
+```
+```{r}
+gapminder %>% ggplot(aes(log10(gdpPercap),lifeExp))+
+  geom_point()+
+  labs(x="gdpPercap(log10)",y="lifeExp")
+  
+#log(x,10)  log10(x)
+```
+```{r}
+gapminder %>% ggplot(aes(gdpPercap,lifeExp))+
+  geom_point()+
+  scale_x_log10()+
+  labs(x="gdpPercap(log10)",y="lifeExp")
+  
+```
+
+```{r}
+gapminder %>% ggplot(aes(gdpPercap,lifeExp,col=continent))+
+  geom_point()+
+  scale_x_log10()+
+  scale_color_brewer(palette = "Set1")+
+  labs(x="gdpPercap",y="lifeExp")
+```
+```{r}
+gapminder %>% ggplot(aes(gdpPercap,lifeExp))+
+  geom_point(alpha=0.3)+
+  scale_x_log10()+
+  scale_shape_manual(values =21 )
+  labs(x="gdpPercap",y="lifeExp")
+#现在做不出灰度图来 原来是要设置alpha属性
+```
+
+```{r}
+gapminder %>% ggplot(aes(gdpPercap,lifeExp))+
+  geom_point()+
+  scale_x_log10()+
+  stat_smooth()
+  labs(x="gdpPercap",y="lifeExp")
+#auto下的非线性拟合
+#stat_smooth() 还可以写 geom_smooth()
+```
+```{r}
+gapminder %>% ggplot(aes(gdpPercap,lifeExp))+
+  geom_point()+
+  scale_x_log10()+
+  geom_smooth(method='auto',se=F)
+  labs(x="gdpPercap",y="lifeExp")
+```
+```{r}
+gapminder %>% ggplot(aes(gdpPercap,lifeExp))+
+  geom_point()+
+  scale_x_log10()+
+  stat_smooth(method='lm',se=F)
+  labs(x="gdpPercap",y="lifeExp")
+```
+```{r}
+gapminder %>% ggplot(aes(gdpPercap,lifeExp,col=continent))+
+  geom_point()+
+  scale_x_log10()+
+  scale_color_brewer(palette = "Set1")+
+  geom_smooth(se=F)
+  labs(x="gdpPercap",y="lifeExp")
+```
+
+```{r}
+gapminder %>% ggplot(aes(gdpPercap,lifeExp))+
+  geom_point(alpha=0.3)+
+  scale_x_log10()+
+  facet_wrap(~continent)
+  labs(x="gdpPercap",y="lifeExp")
+```
+
+```{r}
+gapminder %>% ggplot(aes(gdpPercap,lifeExp))+
+  geom_point(alpha=0.3)+
+  scale_x_log10()+
+  facet_wrap(~continent)+
+  geom_smooth(se=F)+
+  labs(x="gdpPercap",y="lifeExp")
+```
+
+```{r}
+gapminder %>% ggplot(aes(year,lifeExp,col=continent))+
+  geom_point(alpha=0.3)
+#这个不是作业要求的图
+```
+```{r}
+gapminder %>% ggplot(aes(year,lifeExp,col=continent))+
+  geom_jitter(alpha=0.3)
+
+# geom_jitter 自动添加扰动的散点图
+```
+
+```{r}
+gapminder %>% ggplot(aes(year,lifeExp,col=continent))+
+  geom_jitter(alpha=0.3)+
+  facet_wrap(~continent,scales ="free_y")+
+  geom_smooth()
+#不能直接写 scales = "free_*" 会报错
+#写 scales =c('free_x',"free_y")) 也不行
+
+```
+```{r}
+gapminder %>% ggplot(aes(year,lifeExp,col=continent))+
+  geom_jitter(alpha=0.3)+
+  facet_wrap(~continent)+
+  geom_smooth(col="brown")
+#我觉得不需要设置 scales
+```
+
+```{r}
+gapminder %>% ggplot(aes(year,lifeExp))+
+  geom_point() 
+```
+
+```{r}
+gapminder %>% ggplot(aes(year,lifeExp))+
+  geom_point() +
+  stat_summary(fun.daya="mean_se()",col="red")
+  #geom_point(aes(year,lifeExp))
+```
+
+
+
+```{r}
+gapminder %>% ggplot(aes(gdpPercap,lifeExp))+
+  stat_bin2d()+
+  scale_x_log10()+
+  labs(x="gdpPercap",y="lifeExp")
+```
+```{r}
+gapminder %>% ggplot(aes(gdpPercap,lifeExp))+
+  geom_bin2d()+
+  scale_x_log10()+
+  labs(x="gdpPercap",y="lifeExp")
+#和上面效果相同
+```
+
