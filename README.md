@@ -19,6 +19,9 @@ Visualization project
 阅读数据分析---
 
 
+- csvToAllKindsofJson.py ：把csv转成各种json形式的文件。
+
+
 
 ## R vis
 - [RvisvarNight.Rmd ggplot2](./RvisvarNight.Rmd)
