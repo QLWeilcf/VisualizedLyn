@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet-src.js" integrity="sha512-WXoSHqw/t26DszhdMhOXOkI7qCiv5QWXhH9R7CgvgZMHz1ImlkVQ3uNsiQKu5wwbbxtPzFXd1hK4tzno2VqhpA==" crossorigin=""></script>
+    <link type="text/css" rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">    
+	<title>storymapDemo</title> 
+</head>
+<body>
+
+<!--
+key：把 data-place="beijing" 和markers里的 beijing: {lat:39.886426, lon: 116.404762, zoom: 6}, 对应好就好，
+再改对应的section里的描述文本
+
+改左右各自占比改：
+<div class="col-sm-4 col-md-4 main">
+<div id="map" class="col-sm-5 col-md-8 sidebar">
+
+-->
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-sm-4 col-md-4 main">
+
+            <h1 class="page-header">StoryTellingWithMap</h1>
+
+            <section data-place="overview">
+                <p>5个城市</p>
+                <p>占位文本</p>
+                <p>占位文本</p>
+				<p><b>占位文本</b></p>
+				<p>占位文本</p>
+				<br/>
+				<p>占位文本</p>
+				<p><i>占位文本</i></p>
+				<p>占位文本</p>
+				<ul>
+					<li>position 1</li>
+					<li>position 2</li>
+					<li>position 3</li>
+				</ul>
+				<a href="https://v3.bootcss.com/">Bootstrap</a>
+				<p>占位文本</p>
+            </section>
+
+            <section data-place="beijing">
+                <h2>Beijing</h2>
+                <p>占位文本</p>
+                <p>占位文本</p>
+                <p>占位文本</p>
+                <p>占位文本</p>
+                <p>占位文本</p>
+                <p>占位文本</p>
+                <p>占位文本</p>
+                <p>占位文本</p>
+				<table border="1" width="200px">
+					<tr>
+						<td>1</td>
+						<td>2</td>
+					</tr>
+
+					<tr>
+						<td>3</td>
+						<td>4</td>
+					</tr>
+
+					<tr>
+						<td>a</td>
+						<td>b</td>
+					</tr>
+
+				</table>
+				<p> 1   </p>
+				<!--
+				<img src="../image/20161005_161032.jpg" width="233" height="416"/>
+				-->
+				<p> 2  </p>
+            </section>
+
+			<section data-place="tianjin">
+                <h2>Tianjin</h2>
+                <p>占位文本</p>
+                <p>占位文本</p>
+				<del>用del标签实现的删除效果</del>
+				<p><s>使用s标签实现的删除效果，</s> </p>
+				<s>不建议因很多浏览器不支持s标签</s>
+                <p>占位文本</p>
+                <p>占位文本</p>
+                <p>占位文本</p>
+				<ins>使用ins标签实现的下划线效果</ins>
+				</br>
+				<u>使用u标签实现，不建议使用</u>
+                <p>占位文本</p>
+                <p>占位文本</p>
+                <p>占位文本</p>
+            </section>
+			<section data-place="fuyang">
+                <h2>Fuyang</h2>
+                <p>占位文本</p>
+                <p>占位文本</p>
+				<p>占位文本</p>
+                <p>占位文本</p>
+                <p>占位文本</p>
+                <p>占位文本</p>
+                <p>占位文本</p>
+                <p>占位文本</p>
+            </section>
+			<section data-place="ningbo">
+                <h2>Ningbo</h2>
+                <p>占位文本</p>
+                <p>占位文本</p>
+                <p>占位文本</p>
+                <p>占位文本</p>
+				<p>占位文本</p>
+                <p>占位文本</p>
+                <p>占位文本</p>
+                <p>占位文本</p>
+            </section>
+			<section data-place="liuzhou">
+                <h2>Liuzhou</h2>
+                <p>占位文本</p>
+                <p>占位文本</p>
+                <p>占位文本</p>
+                <p>占位文本</p>
+				<p>占位文本</p>
+                <p>占位文本</p>
+                <p>占位文本</p>
+                <p>占位文本</p>
+            </section>
+        </div>
+
+        <div id="map" class="col-sm-5 col-md-8 sidebar">
+
+        </div>
+
+    </div>
+</div>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="storymapmin.js"></script>
+<script type="text/javascript">
+	//也可以把markers包装到一个js文件里，好改动，但这里是min，整合到一个文件更好管理
+    (function () {
+        'use strict';
+
+		var markers = {
+			beijing: {lat:39.886426, lon: 116.404762, zoom: 6},
+			tianjin: {lat:39.134594, lon: 117.191961, zoom: 7},
+			fuyang: {lat:32.645140, lon: 116.268333, zoom: 7},
+			ningbo: {lat:29.763531, lon: 121.898233, zoom: 8},
+			liuzhou: {lat:24.313703, lon: 109.406884, zoom: 7}
+		};
+
+        $('.main').storymap(
+			{
+				markers: markers
+			}
+			);//这里面其他参数还不太理解
+    }());
+</script>
+</body>
+
+<!--
+// additional
+
+        var layers = {
+          'test' : L.tileLayer.wms('http://limes.grid.unep.ch/geoserver/wms?', {
+              layers: 'limes:Balkash_173_20140830_LC8_NDVI',
+              tiled: true,
+              format: 'image/png',
+              transparent: true,
+              maxZoom: 14,
+              minZoom: 0,
+              continuousWorld: true
+              })
+        };
+		//在特定位置加一个图片覆盖物 图层
+        var markers = {
+            beijing: {lat:39.886426, lon: 116.404762, zoom: 11, layer:layers['test']},
+        };
+
+-->
+</html>
