@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css"> 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ==" crossorigin="" />
+    <!--版本就需要是1.0.3的，不能用最新版1.5.1    -->
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet-src.js" integrity="sha512-WXoSHqw/t26DszhdMhOXOkI7qCiv5QWXhH9R7CgvgZMHz1ImlkVQ3uNsiQKu5wwbbxtPzFXd1hK4tzno2VqhpA==" crossorigin=""></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="./dist/MarkerCluster.Default.css" />
+    <script src="./dist/leaflet.markercluster-src.js"></script>
+    <script src="latlong-json-lyns.js"></script>
+	<title>exifStoryMap</title> 
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-sm-4 col-md-4 main">
+
+            <h1 class="page-header">Five Citys Had Visited</h1>
+
+            <section data-place="overview">
+                <p>国内的5个城市</p>
+                <p>exif sotry map的测试例子</p>
+                <p>Proin massa lorem, eleifend non condimentum mattis, ultricies at odio. Vestibulum mauris ante, commodo et purus a, porta pharetra velit. Sed bibendum faucibus metus, at pretium nulla sagittis sit amet. Vestibulum sollicitudin elementum varius. Proin porta sapien justo, vel dapibus justo vulputate eu. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tellus ligula, dapibus eu sem quis, semper cursus dui. In eu facilisis augue. Proin dictum mi ut elit tempor vulputate. Mauris ut metus elit. Integer leo odio, auctor accumsan pharetra eget, aliquam et leo. Phasellus dapibus odio a viverra auctor. Vivamus euismod, nisi nec molestie consequat, ipsum mauris ultrices dolor, sit amet ornare nisl nisi non magna. Duis nunc neque, blandit ac tortor at, tristique pretium elit. Sed ornare porta nulla, vitae dapibus quam sagittis nec. Pellentesque erat purus, cursus sed consequat vel, vulputate at nibh.</p>
+				<p><b>exif sotry map的测试例子</b></p>
+				<p>exif sotry map的测试例子</p>
+            </section>
+
+            <section data-place="beijing">
+                <h2>Beijing</h2>
+                <p>简称“京”，是中华人民共和国省级行政区、首都、直辖市、国家中心城市、超大城市，全国政治中心、文化中心、国际交往中心、科技创新中心，是世界著名古都和现代化国际城市， 是中国共产党中央委员会、中华人民共和国中央人民政府和全国人民代表大会常务委员会的办公所在地。</p>
+                <p>北京地处中国华北地区，中心位于东经116°20′、北纬39°56′，东与天津毗连，其余均与河北相邻，北京市总面积16410.54平方千米</p>
+                <p>北京是一座迷人的城市，既有古典风韵，又具时尚气息。小胡同、老茶馆、新潮酒吧街、繁华商业区，无限的摩登元素与老北京地道的京味儿相互交融，构筑了北京城博大精深的文化底蕴和正统而不失清雅的生活方式。</p>
+				<p>https://baike.baidu.com/item/北京/128981</p>
+				<p> 1   </p>
+				<img src="../image/IMG_20161005_161032.jpg" width="233" height="416"/>
+				<p> 2  </p>
+            </section>
+
+			<section data-place="tianjin">
+                <h2>Tianjin</h2>
+                <p>简称“津”，别称津沽、津门，是中华人民共和国省级行政区，直辖市、国家中心城市、超大城市，国务院批复确定的环渤海地区的经济中心。截至2018年，全市下辖16个区，总面积11916.85平方千米，建成区面积1007.91平方千米</p>
+                <p>天津地处中国华北地区、东临渤海、华北平原东北部、海河流域下游，是海河五大支流南运河、子牙河、大清河、永定河、北运河的汇合处和入海口，素有“九河下梢”“河海要冲”之称。天津是中蒙俄经济走廊主要节点、海上丝绸之路的战略支点、“一带一路”交汇点、亚欧大陆桥最近的东部起点，也是中国北方最大的港口城市，首批沿海开放城市。</p>
+                <p>https://baike.baidu.com/item/天津/132308</p>
+				<p> 1   </p>
+				
+				<p>天津市区的旅游以人文为主。近代中国政局的动荡，特别是辛亥革命以后，天津更成为北京政治后台，大批下野政客、失意军阀、遗老遗少纷纷避居天津各租界内，以求庇护和享乐；也有许多追求进步、探索救国之道的思想家、革命家</p>
+				<p>exif sotry map的测试例子</p>
+				<p> 1   </p>
+            </section>
+			<section data-place="fuyang">
+                <h2>Fuyang</h2>
+                <p>Suspendisse tincidunt neque ipsum, malesuada mattis quam luctus ut. Curabitur sed purus orci. Nullam auctor odio vel mauris vehicula pharetra. Maecenas et justo justo. Nam ut auctor diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque vitae lacus quis nulla varius semper vel quis libero. Donec sagittis rhoncus justo, id bibendum magna scelerisque eget. Aenean ut ante dolor.</p>
+                <p>Curabitur scelerisque diam lacus, at fringilla eros vulputate at. Ut ut eros luctus, auctor ante quis, luctus libero. Aliquam nec dui consectetur, mollis sapien at, convallis augue. Pellentesque facilisis bibendum nisl et aliquet. Pellentesque ac facilisis ante. Proin at libero odio. Sed pharetra elementum lacus sed cursus. Curabitur condimentum eu erat sed ultrices. Sed pretium bibendum nisi eu ornare. Nunc feugiat metus ac arcu eleifend, at iaculis est rutrum. Suspendisse faucibus odio vitae magna ullamcorper, sit amet placerat magna suscipit. Duis fringilla tristique libero eu pretium. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin porttitor nisi tortor, hendrerit commodo elit congue eget. Maecenas lobortis erat sed quam consequat, sed ultricies ante tincidunt.</p>
+                <p>Etiam nec vulputate tellus. Mauris varius aliquam congue. Etiam ac dolor sed felis pellentesque iaculis. In hac habitasse platea dictumst. Vivamus bibendum, nisi id tempor fringilla, augue velit posuere eros, vel mollis massa nisl eget mi. In sit amet libero quis ipsum bibendum pulvinar. In hac habitasse platea dictumst. Vestibulum congue justo erat, a vulputate nibh aliquet vitae. Morbi accumsan lobortis diam, ut aliquet est venenatis sit amet.</p>
+				<p>exif sotry map的测试例子</p>
+				<p> 1   </p>
+				<p> 2  </p>
+            </section>
+			<section data-place="ningbo">
+                <h2>Ningbo</h2>
+                <p>Suspendisse tincidunt neque ipsum, malesuada mattis quam luctus ut. Curabitur sed purus orci. Nullam auctor odio vel mauris vehicula pharetra. Maecenas et justo justo. Nam ut auctor diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque vitae lacus quis nulla varius semper vel quis libero. Donec sagittis rhoncus justo, id bibendum magna scelerisque eget. Aenean ut ante dolor.</p>
+                <p>Curabitur scelerisque diam lacus, at fringilla eros vulputate at. Ut ut eros luctus, auctor ante quis, luctus libero. Aliquam nec dui consectetur, mollis sapien at, convallis augue. Pellentesque facilisis bibendum nisl et aliquet. Pellentesque ac facilisis ante. Proin at libero odio. Sed pharetra elementum lacus sed cursus. Curabitur condimentum eu erat sed ultrices. Sed pretium bibendum nisi eu ornare. Nunc feugiat metus ac arcu eleifend, at iaculis est rutrum. Suspendisse faucibus odio vitae magna ullamcorper, sit amet placerat magna suscipit. Duis fringilla tristique libero eu pretium. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin porttitor nisi tortor, hendrerit commodo elit congue eget. Maecenas lobortis erat sed quam consequat, sed ultricies ante tincidunt.</p>
+                <p>Etiam nec vulputate tellus. Mauris varius aliquam congue. Etiam ac dolor sed felis pellentesque iaculis. In hac habitasse platea dictumst. Vivamus bibendum, nisi id tempor fringilla, augue velit posuere eros, vel mollis massa nisl eget mi. In sit amet libero quis ipsum bibendum pulvinar. In hac habitasse platea dictumst. Vestibulum congue justo erat, a vulputate nibh aliquet vitae. Morbi accumsan lobortis diam, ut aliquet est venenatis sit amet.</p>
+				<p> 1   </p>
+				<img src="../image/IMG_20180704_143118.jpg" width="208" height="416"/>
+				<p>exif sotry map的测试例子</p>
+				<p> 2  </p>
+            </section>
+			<section data-place="liuzhou">
+                <h2>Liuzhou</h2>
+                <p>Suspendisse tincidunt neque ipsum, malesuada mattis quam luctus ut. Curabitur sed purus orci. Nullam auctor odio vel mauris vehicula pharetra. Maecenas et justo justo. Nam ut auctor diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque vitae lacus quis nulla varius semper vel quis libero. Donec sagittis rhoncus justo, id bibendum magna scelerisque eget. Aenean ut ante dolor.</p>
+                <p>Curabitur scelerisque diam lacus, at fringilla eros vulputate at. Ut ut eros luctus, auctor ante quis, luctus libero. Aliquam nec dui consectetur, mollis sapien at, convallis augue. Pellentesque facilisis bibendum nisl et aliquet. Pellentesque ac facilisis ante. Proin at libero odio. Sed pharetra elementum lacus sed cursus. Curabitur condimentum eu erat sed ultrices. Sed pretium bibendum nisi eu ornare. Nunc feugiat metus ac arcu eleifend, at iaculis est rutrum. Suspendisse faucibus odio vitae magna ullamcorper, sit amet placerat magna suscipit. Duis fringilla tristique libero eu pretium. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin porttitor nisi tortor, hendrerit commodo elit congue eget. Maecenas lobortis erat sed quam consequat, sed ultricies ante tincidunt.</p>
+                <p>Etiam nec vulputate tellus. Mauris varius aliquam congue. Etiam ac dolor sed felis pellentesque iaculis. In hac habitasse platea dictumst. Vivamus bibendum, nisi id tempor fringilla, augue velit posuere eros, vel mollis massa nisl eget mi. In sit amet libero quis ipsum bibendum pulvinar. In hac habitasse platea dictumst. Vestibulum congue justo erat, a vulputate nibh aliquet vitae. Morbi accumsan lobortis diam, ut aliquet est venenatis sit amet.</p>
+				<p> 1   </p>
+				<p>exif sotry map的测试例子</p>
+				<p> 2  </p>
+            </section>
+
+        </div>
+
+        <div id="map" class="col-sm-5 col-md-8 sidebar">
+
+        </div>
+
+    </div>
+</div>
+
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="storymap.js"></script>
+<script type="text/javascript" src="storymap-markers.js"></script>
+<script type="text/javascript">
+    (function () {
+        'use strict';
+
+        $('.main').storymap(
+			{
+				markers: markers
+			}
+			);
+        //.addLayer(markersw);
+    }());
+</script>
+</body>
+</html>
